@@ -17,16 +17,16 @@
 ## (Comments)
 #Sample Feature Definition Template
 @tag
-Feature: To add the customer
+Feature: To test the simple input field form
+  I want to use this template for my feature file
 
   @tag1
-  Scenario: To test the add customer function
-    Given The user is in gurutelecom home page
-    And user navigates to add customer page
-    When when the user fill in the details
-      | fname  | lname | email            | addr      | telephoneno |
-      | balaji | kumar | kumar1@gmail.com | chennai   | 12234567890 |
-      | balaji | kumar | kumar@gmail.com  | Bengaluru | 12234567890 |
-      | balaji | kumar | kumar2@gmail.com | hyderabad | 12234567890 |
-    And the user clicks the submit button
-    Then the customer id is generated
+  Scenario: To test the simple input field form
+    Given User is in seleniumeasy page
+    And user has to click the input forms
+    And user has to click the simple form demo
+    When User has to pass the text
+    And User has to click on the show message
+    Then User has to view the message typed
+
+  

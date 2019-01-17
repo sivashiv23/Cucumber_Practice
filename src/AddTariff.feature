@@ -17,16 +17,18 @@
 ## (Comments)
 #Sample Feature Definition Template
 @tag
-Feature: To add the customer
+Feature: Add Tariff Plan
 
   @tag1
-  Scenario: To test the add customer function
+  Scenario Outline: To add tariff plan
     Given The user is in gurutelecom home page
-    And user navigates to add customer page
-    When when the user fill in the details
-      | fname  | lname | email            | addr      | telephoneno |
-      | balaji | kumar | kumar1@gmail.com | chennai   | 12234567890 |
-      | balaji | kumar | kumar@gmail.com  | Bengaluru | 12234567890 |
-      | balaji | kumar | kumar2@gmail.com | hyderabad | 12234567890 |
+    And The user navigates to add tariff plan page
+    When the user fills the tariff details "<Monthrent>", "<Freeloc>", "<FreeInt>", "<Freesms>", "<Loccharge>", "<Intcharge>","<SMScharge>"
     And the user clicks the submit button
-    Then the customer id is generated
+    Then the user must see the message plan added
+
+    Examples: 
+      | Monthrent | Freeloc | FreeInt | Freesms | Loccharge | Intcharge | SMScharge |
+      |       500 |     100 |     200 |     300 |       400 |       500 |        50 |
+      |       500 |     100 |     200 |     300 |       400 |       500 |        50 |
+    

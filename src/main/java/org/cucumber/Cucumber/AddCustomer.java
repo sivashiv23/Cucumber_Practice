@@ -1,15 +1,17 @@
 package org.cucumber.Cucumber;
 
+import java.util.List;
+import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
+import io.cucumber.datatable.DataTable;
 
 public class AddCustomer {
 	static WebDriver driver;
@@ -33,23 +35,17 @@ public class AddCustomer {
 	}
 
 	@When("when the user fill in the details")
-	public void when_the_user_fill_in_the_details() throws InterruptedException {
-		Thread.sleep(1000);
-		// driver.findElement(By.xpath("(//input[@type='radio'])[1]")).click();
-		WebElement fname = driver.findElement(By.id("fname"));
-		fname.sendKeys("siva");
+	public void when_the_user_fill_in_the_details(DataTable dataTable) {
 
-		WebElement lname = driver.findElement(By.id("lname"));
-		lname.sendKeys("sankari");
+		// List<List<String>> cust_data_asLists = dataTable.asLists(String.class);
+		List<Map<String, String>> cust_data_asMaps = dataTable.asMaps(String.class, String.class);
+		System.out.println(cust_data_asMaps);
+		driver.findElement(By.id("fname")).sendKeys(cust_data_asMaps.get(2).get("fname"));
+		driver.findElement(By.id("lname")).sendKeys(cust_data_asMaps.get(1).get("lname"));
+		driver.findElement(By.id("email")).sendKeys(cust_data_asMaps.get(0).get("email"));
+		driver.findElement(By.name("addr")).sendKeys(cust_data_asMaps.get(1).get("addr"));
+		driver.findElement(By.id("telephoneno")).sendKeys(cust_data_asMaps.get(2).get("telephoneno"));
 
-		WebElement mail = driver.findElement(By.id("email"));
-		mail.sendKeys("abc@gmail.com");
-
-		WebElement address = driver.findElement(By.name("addr"));
-		address.sendKeys("chennai");
-
-		WebElement phno = driver.findElement(By.id("telephoneno"));
-		phno.sendKeys("123445");
 	}
 
 	@When("the user clicks the submit button")
@@ -59,7 +55,7 @@ public class AddCustomer {
 
 	@Then("the customer id is generated")
 	public void the_customer_id_is_generated() {
-		String text = driver.findElement(By.xpath("//*[@id=\"main\"]/div/div/table/tbody/tr[2]/td/b")).getText();
+		String text = driver.findElement(By.xpath("/html/body/section/div/div/table/tbody/tr[2]/td/b")).getText();
 		System.out.println(text);
 
 	}

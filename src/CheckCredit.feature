@@ -17,16 +17,15 @@
 ## (Comments)
 #Sample Feature Definition Template
 @tag
-Feature: To add the customer
+Feature: To test the Check credit function
 
   @tag1
-  Scenario: To test the add customer function
-    Given The user is in gurutelecom home page
-    And user navigates to add customer page
-    When when the user fill in the details
-      | fname  | lname | email            | addr      | telephoneno |
-      | balaji | kumar | kumar1@gmail.com | chennai   | 12234567890 |
-      | balaji | kumar | kumar@gmail.com  | Bengaluru | 12234567890 |
-      | balaji | kumar | kumar2@gmail.com | hyderabad | 12234567890 |
-    And the user clicks the submit button
-    Then the customer id is generated
+  Scenario: To test the check credit function
+    Given User should be in guru telecom homepage
+    And user navigate to the payment gateway project
+    And user clicks on the check credit balance
+    When user has to provide the card number 
+    And user click on submit
+    Then user should see the credit balance on the provided card number
+
+ 

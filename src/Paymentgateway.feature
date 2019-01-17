@@ -17,16 +17,18 @@
 ## (Comments)
 #Sample Feature Definition Template
 @tag
-Feature: To add the customer
+Feature: To test the pay bill function
+
+  Background: 
+    Given The user should generate the new card
+    Then store the card details
 
   @tag1
-  Scenario: To test the add customer function
+  Scenario: To test the paying function
     Given The user is in gurutelecom home page
-    And user navigates to add customer page
-    When when the user fill in the details
-      | fname  | lname | email            | addr      | telephoneno |
-      | balaji | kumar | kumar1@gmail.com | chennai   | 12234567890 |
-      | balaji | kumar | kumar@gmail.com  | Bengaluru | 12234567890 |
-      | balaji | kumar | kumar2@gmail.com | hyderabad | 12234567890 |
-    And the user clicks the submit button
-    Then the customer id is generated
+    And user navigates to payment gateway page
+    When User should choose the quantity of the item
+    And User click on buynow option
+    Then User enters the 	card number,expiration month,expiration year,cvv code
+    And User clicks on pay
+    And The message Payment successfull! is displayed
