@@ -1,12 +1,12 @@
 package org.cucumber.Cucumber;
 
 import org.junit.runner.RunWith;
-
 import cucumber.api.CucumberOptions;
+import cucumber.api.junit.Cucumber;
 
-@CucumberOptions(features = "C:\\Users\\sb61\\eclipse-workspace\\sivaws\\Cucumber\\src\\AddTariff.feature", glue = {
-		"C:\\Users\\sb61\\eclipse-workspace\\sivaws\\Cucumber\\src\\main\\java\\org\\cucumber\\Cucumber" }, plugin = {
-				"html:target" })
+@RunWith(Cucumber.class)
+@CucumberOptions(features = "C:\\Users\\sb61\\eclipse-workspace\\sivaws\\Cucumber\\src\\CheckCredit.feature", glue = {
+		"org.cucumber.Cucumber" }, plugin = { "html:target" })
 
 public class TestRunner {
 
